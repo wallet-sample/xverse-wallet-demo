@@ -82,7 +82,6 @@ export const App = () => {
         })
       }
 
-      let psbtBase64
       let txid
 
       const signPsbtOptions = {
@@ -92,11 +91,10 @@ export const App = () => {
           },
           message: 'Sign Transaction',
           psbtBase64: unsignedPsbt.psbtBase64,
-          broadcast: false,
+          broadcast: true,
           inputsToSign,
         },
         onFinish: (response) => {
-          psbtBase64 = response.psbtBase64
           txid = response.txId
         },
         onCancel: () => {
