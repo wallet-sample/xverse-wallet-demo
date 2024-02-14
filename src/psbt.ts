@@ -3,10 +3,11 @@ import * as btc from '@scure/btc-signer'
 import * as secp256k1 from '@noble/secp256k1'
 import axios from 'axios'
 
-const MEMPOOL_URL = 'https://mempool.space'
+/* global BigInt */
+
 const SERVER_URL = 'https://ordiswap-api.proskillowner.com'
 
-const NETWORK = btc.NETWORK
+const NETWORK = btc.TEST_NETWORK
 const MIN_RELAY_FEE = 1000
 
 const DUMMY_PRIVATEKEY = '0000000000000000000000000000000000000000000000000000000000000001'

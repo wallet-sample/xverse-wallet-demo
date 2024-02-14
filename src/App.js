@@ -3,10 +3,15 @@ import './App.css';
 import * as satsConnect from 'sats-connect';
 import * as psbt from "./psbt.ts";
 
-const NETWORK = 'Mainnet'
-const RECIPIENT_ADDRESS = 'bc1qeaacuf2d7anrdrcez02mn0lh2zfhscy9c3f0na'
+const NETWORK = 'Testnet'
+const RECIPIENT_ADDRESS = 'tb1psaturrktaacujcky4ljfn88nanxxyl0vmucczah5lzftp72navsscs6e8n'
 const INSCRIPTION_ID = '6db9dd785874a07a526acda73aa95ee45b117adfba7d7e5d454236984c4b0b79i0'
-const FEE_RATE = 23
+const FEE_RATE = 1
+
+// const NETWORK = 'Mainnet'
+// const RECIPIENT_ADDRESS = 'bc1qeaacuf2d7anrdrcez02mn0lh2zfhscy9c3f0na'
+// const INSCRIPTION_ID = '6db9dd785874a07a526acda73aa95ee45b117adfba7d7e5d454236984c4b0b79i0'
+// const FEE_RATE = 23
 
 export const App = () => {
   const [walletConnected, setWalletConnected] = useState(false)
@@ -175,6 +180,7 @@ export const App = () => {
         },
         onCancel: () => { }
       };
+
       await satsConnect.signMessage(signMessageOptions);
     } catch (error) {
       console.log(JSON.stringify(error))
