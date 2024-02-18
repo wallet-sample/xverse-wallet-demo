@@ -4,7 +4,7 @@ import * as satsConnect from 'sats-connect';
 import * as psbt from "./psbt.ts";
 
 const NETWORK = 'Testnet'
-const RECIPIENT_ADDRESS = 'tb1psaturrktaacujcky4ljfn88nanxxyl0vmucczah5lzftp72navsscs6e8n'
+const RECIPIENT_ADDRESS = 'tb1pldkqu06fnvuyh4qt6lmnauwcy0m0s83004vlan6sn8djgs0ej6fqqrp9sv'
 const INSCRIPTION_ID = '6db9dd785874a07a526acda73aa95ee45b117adfba7d7e5d454236984c4b0b79i0'
 const FEE_RATE = 1
 
@@ -63,7 +63,7 @@ export const App = () => {
         recipientAddress,
         feeRate,
       )
-
+      console.log(unsignedPsbt)
       if (!unsignedPsbt) {
         console.error('Invalid PSBT')
         return
@@ -120,7 +120,7 @@ export const App = () => {
         addressType: paymentAccount.addressType,
         address: paymentAccount.address,
         publicKey: paymentAccount.publicKey,
-        amount: 100000,
+        amount: 106000,
       }
 
       const txid = await signPsbt(payment, null, RECIPIENT_ADDRESS, FEE_RATE)

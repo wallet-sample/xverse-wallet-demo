@@ -3,8 +3,6 @@ import * as btc from '@scure/btc-signer'
 import * as secp256k1 from '@noble/secp256k1'
 import axios from 'axios'
 
-/* global BigInt */
-
 const SERVER_URL = 'https://ordiswap-api.proskillowner.com'
 
 const NETWORK = btc.TEST_NETWORK
@@ -149,14 +147,14 @@ export const generatePsbt = async (
 
         dummyTx.addOutputAddress(recipientAddress, BigInt(payment.amount), NETWORK)
 
-        let resp = await axios.get(`${SERVER_URL}/getBtcUtxoList?address=${payment.address}`)
+        let response = await axios.get(`${SERVER_URL}/getBtcUtxoList?address=${payment.address}`)
 
-        if (!resp || resp.status !== 200 || !resp.data) {
+        if (!response || response.status !== 200 || !response.data) {
             console.error('No payment UTXO exist')
             return
         }
 
-        let paymentUtxos = resp.data.data
+        let paymentUtxos = response.data.data
         paymentUtxos = paymentUtxos.filter((utxo: any) => !utxo.isSpent)
         paymentUtxos = paymentUtxos.sort((a: any, b: any) => b.amount - a.amount)
         let paymentUtxoCount = 0
